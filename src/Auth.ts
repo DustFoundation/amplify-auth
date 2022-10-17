@@ -1867,6 +1867,10 @@ export class AuthClass {
                 ? options.provider
                 : (options as FederatedSignInOptionsCustom).customProvider;
 
+            const redirectUri = isFederatedSignInOptions(options)
+                ? options.redirectUri
+                : (options as FederatedSignInOptionsCustom).customRedirectUri;
+
             const customState = isFederatedSignInOptions(options)
                 ? options.customState
                 : (options as FederatedSignInOptionsCustom).customState;
@@ -1878,7 +1882,7 @@ export class AuthClass {
                 /*Note: Invenstigate automatically adding trailing slash */
                 const redirect_uri = isCognitoHostedOpts(this._config.oauth)
                     ? this._config.oauth.redirectSignIn
-                    : this._config.oauth.redirectUri;
+                    : redirectUri || this._config.oauth.redirectUri;
 
                 this._oAuthHandler.oauthSignIn(
                     this._config.oauth.responseType,

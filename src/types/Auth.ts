@@ -70,11 +70,13 @@ export type LegacyProvider =
 
 export type FederatedSignInOptions = {
     provider: CognitoHostedUIIdentityProvider;
+    redirectUri?: string;
     customState?: string;
 };
 
 export type FederatedSignInOptionsCustom = {
     customProvider: string;
+    customRedirectUri?: string;
     customState?: string;
 };
 
