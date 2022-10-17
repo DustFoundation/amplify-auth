@@ -13,14 +13,15 @@
 import { browserOrNode } from '@aws-amplify/core';
 
 export default callback => {
-	if (browserOrNode().isBrowser && window.location) {
-		const url = window.location.href;
+    if (browserOrNode().isBrowser && window.location) {
+        const url = window.location.href;
 
-		callback({ url });
-	} else if (browserOrNode().isNode) {
-		// continue building on ssr
-		() => {}; // noop
-	} else {
-		throw new Error('Not supported');
-	}
+        callback({ url });
+    } else if (browserOrNode().isNode) {
+        // continue building on ssr
+        () => {
+        }; // noop
+    } else {
+        throw new Error('Not supported');
+    }
 };
