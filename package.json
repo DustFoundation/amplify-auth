@@ -1,6 +1,6 @@
 {
   "name": "@dustfoundation/amplify-auth",
-  "version": "4.6.10",
+  "version": "4.6.11",
   "files": [
     "dist"
   ],
