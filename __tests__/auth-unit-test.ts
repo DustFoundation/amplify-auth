@@ -2194,6 +2194,7 @@ describe('auth unit test', () => {
 				.spyOn(Auth.prototype, 'verifyUserAttributeSubmit')
 				.mockImplementationOnce(() => {
 					return new Promise((res, rej) => {
+						// @ts-expect-error
 						res();
 					});
 				});
@@ -2266,6 +2267,7 @@ describe('auth unit test', () => {
 				.spyOn(Auth.prototype, 'currentUserCredentials')
 				.mockImplementationOnce(() => {
 					return new Promise((resolve, reject) => {
+						// @ts-expect-error
 						resolve();
 					});
 				});

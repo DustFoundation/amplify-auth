@@ -1568,6 +1568,7 @@ export class AuthClass {
 		}
 		if (this.isSignedInHostedUI()) {
 			return new Promise((res, rej) => {
+				// @ts-expect-error
 				this.oAuthSignOutRedirect(res, rej);
 			});
 		} else {
@@ -1598,6 +1599,7 @@ export class AuthClass {
 
 								Hub.remove('auth', hostedUISignCallback);
 
+								// @ts-expect-error
 								res();
 							}, OAUTH_FLOW_MS_TIMEOUT);
 
@@ -1615,6 +1617,7 @@ export class AuthClass {
 
 									Hub.remove('auth', hostedUISignCallback);
 
+								// @ts-expect-error
 									res();
 								}
 							}
@@ -2028,8 +2031,10 @@ export class AuthClass {
 							onSuccess: data => {
 								logger.debug('global sign out success');
 								if (isSignedInHostedUI) {
+									// @ts-expect-error
 									this.oAuthSignOutRedirect(res, rej);
 								} else {
+									// @ts-expect-error
 									return res();
 								}
 							},
@@ -2045,8 +2050,10 @@ export class AuthClass {
 				logger.debug('user sign out', user);
 				user.signOut(() => {
 					if (isSignedInHostedUI) {
+						// @ts-expect-error
 						this.oAuthSignOutRedirect(res, rej);
 					} else {
+						// @ts-expect-error
 						return res();
 					}
 				});
@@ -2170,6 +2177,7 @@ export class AuthClass {
 			user.forgotPassword(
 				{
 					onSuccess: () => {
+						// @ts-expect-error
 						resolve();
 						return;
 					},
